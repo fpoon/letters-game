@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: letters-game
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/lettersgame
+    username: lettersgame
+    password: lettersgame
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
