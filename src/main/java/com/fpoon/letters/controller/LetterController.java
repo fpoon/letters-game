@@ -23,8 +23,10 @@ public class LetterController {
 
     @RequestMapping(value = "/{letter}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.OK)
-    public void put(@PathVariable Character letter, @RequestParam("score") Integer score) {
-        letterService.put(letter, score);
+    public void put(@PathVariable Character letter,
+                    @RequestParam("score") Integer score,
+                    @RequestParam("quantity") Integer quantity) {
+        letterService.put(letter, score, quantity);
     }
 
 

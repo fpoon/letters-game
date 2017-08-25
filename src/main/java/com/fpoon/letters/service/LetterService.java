@@ -22,8 +22,8 @@ public class LetterService {
 
     @Transactional
     @Modifying
-    public void put(Character letter, Integer score) {
-        letterRepository.save(new Letter(letter, score));
+    public void put(Character letter, Integer score, Integer quantity) {
+        letterRepository.save(new Letter(letter, score, quantity));
     }
 
     @Transactional

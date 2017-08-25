@@ -21,4 +21,6 @@ public class Letter {
     Character letter;
 
     Integer score;
+
+    Integer quantity;
 }
