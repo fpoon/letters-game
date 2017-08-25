@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.InputStream;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -28,6 +29,10 @@ public class ImportService {
             log.info("Importing letter set {}", file.getOriginalFilename());
 
             List<Letter> letters = readCsv(Letter.class, file.getInputStream());
+            letters = letters.stream()
+                    .filter(letter -> letter.getQuantity() > 0)
+                    .collect(Collectors.toList());
+
             letterRepository.deleteAll();
             letterRepository.save(letters);
 
