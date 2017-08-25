@@ -1,18 +1,21 @@
 package com.fpoon.letters.controller;
 
 import com.fpoon.letters.domain.Letter;
-import org.springframework.http.HttpStatus;
+import com.fpoon.letters.service.LetterService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/letter")
-public class LettersController {
+@RequiredArgsConstructor
+public class LetterController {
+    private final LetterService letterService;
 
     @RequestMapping(value = "/{letter}", method = RequestMethod.GET)
     @ResponseBody
     public Letter get(@PathVariable Character letter) {
-        return new Letter(letter, 1);
+        return letterService.get(letter);
     }
 
 }
