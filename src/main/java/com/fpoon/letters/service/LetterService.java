@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class LetterService {
@@ -22,6 +24,11 @@ public class LetterService {
     @Modifying
     public void put(Character letter, Integer score) {
         letterRepository.save(new Letter(letter, score));
+    }
+
+    @Transactional
+    public List<Letter> getAll() {
+        return letterRepository.findAll();
     }
 
 
