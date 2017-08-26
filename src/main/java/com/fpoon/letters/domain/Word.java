@@ -15,10 +15,10 @@ import javax.persistence.Id;
 public class Word {
 
     @Id
-    Long id;
-
-    @Column(unique = true, nullable = false)
     String word;
+
+    @Column(length = 1023, nullable = true)
+    String description;
 
     @Column(length = 255, nullable = true)
     String source;

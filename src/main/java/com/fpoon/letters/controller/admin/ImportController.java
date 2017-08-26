@@ -1,6 +1,7 @@
 package com.fpoon.letters.controller.admin;
 
 import com.fpoon.letters.domain.Letter;
+import com.fpoon.letters.domain.Word;
 import com.fpoon.letters.service.admin.ImportService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -23,5 +24,11 @@ public class ImportController {
     @ResponseBody
     public List<Letter> importLetters(@RequestParam("file") MultipartFile file) {
         return importService.readLetterCsv(file);
+    }
+
+    @RequestMapping(value = "/words", method = RequestMethod.POST)
+    @ResponseBody
+    public List<Word> importWords(@RequestParam("file") MultipartFile file) {
+        return importService.readWordCsv(file);
     }
 }
